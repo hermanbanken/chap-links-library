@@ -32,6 +32,8 @@
  * @author     Jos de Jong, <jos@almende.org>
  * @date    2013-04-18
  * @version 2.4.2
+ *
+ * @modified-by Guido Bouman for Q42
  */
 
 /*
@@ -187,6 +189,10 @@ links.Timeline = function(container) {
 
         'moveable': true,
         'zoomable': true,
+
+        // Modified by Guido Bouman for Q42
+        'scrollable': true,
+
         'selectable': true,
         'editable': false,
         'snapEvents': true,
@@ -3038,6 +3044,10 @@ links.Timeline.prototype.onDblClick = function (event) {
  */
 links.Timeline.prototype.onMouseWheel = function(event) {
     if (!this.options.zoomable)
+        return;
+
+    // Modified by Guido Bouman for Q42
+    if (!this.options.scrollable)
         return;
 
     if (!event) { /* For IE. */
